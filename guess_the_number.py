@@ -38,14 +38,11 @@ def main():
 
     while True:
         guess = get_guess()
+        total_guess = total_guess + 1
         result = check_guess(guess, secret)
         print(result)
 
-        if result != correct:
-            total_guess = total_guess + 1
-
         if result == correct:
-            total_guess = total_guess + 1
             break
 
     print('Thanks for playing the game!')
