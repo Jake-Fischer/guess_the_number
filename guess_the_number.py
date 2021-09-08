@@ -21,7 +21,7 @@ def get_guess():
     while guess.isnumeric() is False:
         guess = input('Guess must be a number: ')
 
-    return guess   
+    return int(guess)   
 
 
 def check_guess(guess, secret):
