@@ -3,6 +3,7 @@ import random
 correct = 'you guessed correctly!'
 too_low = 'too low'
 too_high = 'too high'
+thanks = 'Thanks, '
 
 
 def configure_range():
@@ -17,11 +18,13 @@ def generate_secret(low, high):
 
 def get_guess():
     """ get user's guess, as an integer number """
+
     guess = input('Please guess the number: ')
     while guess.isnumeric() is False:
         guess = input('Guess must be a number: ')
 
     return int(guess)   
+
 
 
 def check_guess(guess, secret):
@@ -38,13 +41,15 @@ def main():
 
     (low, high) = configure_range()
     secret = generate_secret(low, high)
+
     total_guess = 0
+
 
     while True:
         guess = get_guess()
         total_guess = total_guess + 1
         result = check_guess(guess, secret)
-        print(result)
+        print(thanks,result)
 
         if result == correct:
             break
