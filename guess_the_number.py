@@ -18,7 +18,13 @@ def generate_secret(low, high):
 
 def get_guess():
     """ get user's guess, as an integer number """
-    return int(input('Guess the secret number, Please? '))
+
+    guess = input('Please guess the number: ')
+    while guess.isnumeric() is False:
+        guess = input('Guess must be a number: ')
+
+    return int(guess)   
+
 
 
 def check_guess(guess, secret):
@@ -35,9 +41,13 @@ def main():
 
     (low, high) = configure_range()
     secret = generate_secret(low, high)
-    
+
+    total_guess = 0
+
+
     while True:
         guess = get_guess()
+        total_guess = total_guess + 1
         result = check_guess(guess, secret)
         print(thanks,result)
 
@@ -45,7 +55,7 @@ def main():
             break
 
     print('Thanks for playing the game!')
-
+    print(f'It took you {total_guess} guesses to figure it out!')
 
 if __name__ == '__main__':
     main()
